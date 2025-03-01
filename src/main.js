@@ -45,7 +45,19 @@ function newGame() {
 
 
 function draw() {
-  
+  ctx.save();
+  // Flip coordinate system upside down
+  ctx.translate(0, window.innerHeight);
+  ctx.scale(1, -1);
+  // Draw scene
+  drawBackground();
+  drawBackgroundBuildings();
+  drawBuildings();
+  drawGorilla(1);
+  drawGorilla(2);
+  drawBomb();
+  // Restore transformation
+  ctx.restore();
 }
 
 
@@ -58,6 +70,28 @@ function generateBuilding(index) {
 }
 
 function initializeBombPosition() {
+  // body...
+}
+
+
+// Draw functions
+function drawBackground() {
+  // body...
+}
+
+function drawGorilla(index) {
+  // body...
+}
+
+function drawBomb() {
+  // body...
+}
+
+function drawBackgroundBuildings() {
+  // body...
+}
+
+function drawBuildings() {
   // body...
 }
 
