@@ -40,6 +40,8 @@ function newGame() {
     generateBuilding(i);
   }
 
+  console.log(state.buildings);
+
   initializeBombPosition();
 
   draw();
@@ -78,7 +80,31 @@ function generateBackgroundBulding(index) {
 }
 
 function generateBuilding(index) {
-  // body...
+  const previousBuilding = state.buildings[index - 1];
+  const x = previousBuilding
+    ? previousBuilding.x + previousBuilding.width + 4
+    : 0;
+  const minWidth = 80;
+  const maxWidth = 130;
+  const width = minWidth + Math.random() * (maxWidth - minWidth);
+  
+  const platformWithGorilla = index === 1 || index === 6;
+
+  const minHeight = 40;
+  const maxHeight = 300;
+  const minHeightGorilla = 30;
+  const maxHeightGorilla = 150;
+
+  const height = platformWithGorilla
+    ? minHeightGorilla + Math.random() * (maxHeightGorilla - minHeightGorilla)
+    : minHeight + Math.random() * (maxHeight - minHeight);
+  // Generate an array of booleans to show if the light is on or off in a room
+  const lightsOn = [];
+  for (let i = 0; i < 50; i += 1) {
+    const light = Math.random() <= 0.33 ? true : false;
+    lightsOn.push(light);
+  }
+  state.buildings.push({ x, width, height, lightsOn });
 }
 
 function initializeBombPosition() {
