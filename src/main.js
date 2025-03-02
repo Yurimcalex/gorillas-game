@@ -15,7 +15,7 @@ newGame();
 function newGame() {
   // Reset the game state
   state = {
-    phase: 'celebrating', // aiming | in flight | celebrating
+    phase: 'aiming', // aiming | in flight | celebrating
     currentPlayer: 1,
     bomb: {
       x: undefined,
@@ -147,13 +147,13 @@ function drawGorillaLeftArm(player) {
   ctx.lineWidth = 18;
   ctx.beginPath();
   ctx.moveTo(-14, 50);
-  // if (state.phase === 'aiming' && state.currentPlayer === 1 && player === 1) {
-  //   ctx.quadraticCurveTo(-44, 63, -28, 107);
-  // } else if (state.phase === 'celebrating' && state.currentPlayer === player) {
-  //   ctx.quadraticCurveTo(-44, 63, -28, 107);
-  // } else {
+  if (state.phase === 'aiming' && state.currentPlayer === 1 && player === 1) {
+    ctx.quadraticCurveTo(-44, 63, -28, 107);
+  } else if (state.phase === 'celebrating' && state.currentPlayer === player) {
+    ctx.quadraticCurveTo(-44, 63, -28, 107);
+  } else {
     ctx.quadraticCurveTo(-44, 45, -28, 12);
-  // }
+  }
   ctx.stroke();
 }
 
@@ -162,13 +162,13 @@ function drawGorillaRightArm(player) {
   ctx.lineWidth = 18;
   ctx.beginPath();
   ctx.moveTo(14, 50);
-  // if (state.phase === 'aiming' && state.currentPlayer === 2 && player === 2) {
-  //   ctx.quadraticCurveTo(44, 63, 28, 107);
-  // } else if (state.phase === 'celebrating' && state.currentPlayer === player) {
-  //   ctx.quadraticCurveTo(44, 63, 28, 107);
-  // } else {
+  if (state.phase === 'aiming' && state.currentPlayer === 2 && player === 2) {
+    ctx.quadraticCurveTo(44, 63, 28, 107);
+  } else if (state.phase === 'celebrating' && state.currentPlayer === player) {
+    ctx.quadraticCurveTo(44, 63, 28, 107);
+  } else {
     ctx.quadraticCurveTo(44, 45, 28, 12);
-  // }
+  }
   ctx.stroke();
 }
 
