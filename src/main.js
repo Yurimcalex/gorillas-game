@@ -40,8 +40,6 @@ function newGame() {
     generateBuilding(i);
   }
 
-  console.log(state.buildings);
-
   initializeBombPosition();
 
   draw();
@@ -143,7 +141,42 @@ function drawBackgroundBuildings() {
 }
 
 function drawBuildings() {
-  // body...
+  state.buildings.forEach((building) => {
+    // Draw a building
+    ctx.fillStyle = '#4A3C68';
+    ctx.fillRect(building.x, 0, building.width, building.height);
+    // Draw windows
+    const windowWidth = 10;
+    const windowHeight = 12;
+    const gap = 15;
+    
+    const numberOfFloors = Math.ceil(
+      (building.height - gap) / (windowHeight + gap)
+    );
+
+    const numberOfRoomsPerFloor= Math.floor(
+      (building.width - gap) / (windowWidth + gap)
+    );
+
+    for (let floor = 0; floor < numberOfFloors; floor += 1) {
+      for (let room = 0; room < numberOfRoomsPerFloor; room += 1) {
+        if (building.lightsOn[floor * numberOfRoomsPerFloor + room]) {
+          ctx.save();
+
+          ctx.translate(building.x + gap, building.height - gap);
+          ctx.scale(1, -1);
+
+          const x = room * (windowWidth + gap);
+          const y = floor * (windowHeight + gap);
+
+          ctx.fillStyle = '#EBB6A2';
+          ctx.fillRect(x, y, windowWidth, windowWidth);
+
+          ctx.restore();
+        }
+      }
+    }
+  });
 }
 
 
