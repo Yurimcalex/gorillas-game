@@ -125,6 +125,7 @@ function drawBackground() {
   ctx.fill();
 }
 
+
 function drawGorilla(player) {
   ctx.save();
   const building = player === 1
@@ -133,13 +134,32 @@ function drawGorilla(player) {
 
   ctx.translate(building.x + building.width / 2, building.height);
 
-  // drawGorillaBody();
+  drawGorillaBody();
   // drawGorillaLeftArm(player);
   // drawGorillaRightArm(player);
   // drawGorillaFace(player);
 
   ctx.restore();
 }
+
+function drawGorillaBody() {
+  ctx.fillStyle = 'black';
+  ctx.beginPath();
+  ctx.moveTo(0, 15);
+  ctx.lineTo(-7, 0);
+  ctx.lineTo(-20, 0);
+  ctx.lineTo(-17, 18);
+  ctx.lineTo(-20, 44);
+  ctx.lineTo(-11, 77);
+  ctx.lineTo(0, 84);
+  ctx.lineTo(11, 77);
+  ctx.lineTo(20, 44);
+  ctx.lineTo(17, 18);
+  ctx.lineTo(20, 0);
+  ctx.lineTo(7, 0);
+  ctx.fill();
+}
+
 
 function drawBomb() {
   // body...
