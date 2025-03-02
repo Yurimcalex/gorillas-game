@@ -110,7 +110,10 @@ function drawBomb() {
 }
 
 function drawBackgroundBuildings() {
-  // body...
+  state.backgroundBuildings.forEach((building) => {
+    ctx.fillStyle = '#947285';
+    ctx.fillRect(building.x, 0, building.width, building.height);
+  });
 }
 
 function drawBuildings() {
