@@ -64,7 +64,17 @@ function draw() {
 
 
 function generateBackgroundBulding(index) {
-  // body...
+  const previousBuilding = state.backgroundBuildings[index - 1];
+  const x = previousBuilding
+    ? previousBuilding.x + previousBuilding.width + 4
+    : -30;
+  const minWidth = 60;
+  const maxWidth = 110;
+  const width = minWidth + Math.random() * (maxWidth - minWidth);
+  const minHeight = 80;
+  const maxHeight = 350;
+  const height = minWidth + Math.random() * (maxHeight - minHeight);
+  state.backgroundBuildings.push({ x, width, height }); 
 }
 
 function generateBuilding(index) {
