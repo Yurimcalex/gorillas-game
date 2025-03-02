@@ -125,8 +125,20 @@ function drawBackground() {
   ctx.fill();
 }
 
-function drawGorilla(index) {
-  // body...
+function drawGorilla(player) {
+  ctx.save();
+  const building = player === 1
+    ? state.buildings[1]
+    : state.buildings[state.buildings.length - 2];
+
+  ctx.translate(building.x + building.width / 2, building.height);
+
+  // drawGorillaBody();
+  // drawGorillaLeftArm(player);
+  // drawGorillaRightArm(player);
+  // drawGorillaFace(player);
+
+  ctx.restore();
 }
 
 function drawBomb() {
