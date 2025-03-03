@@ -137,12 +137,12 @@ function initializeBombPosition() {
 
 // Draw functions
 function drawBackground() {
-  const gradient = ctx.createLinearGradient(0, 0, 0, window.innerHeight);
+  const gradient = ctx.createLinearGradient(0, 0, 0, window.innerHeight / state.scale);
   gradient.addColorStop(1, '#F8BA85');
   gradient.addColorStop(0, '#FFC28E');
   // Draw sky
   ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+  ctx.fillRect(0, 0, window.innerWidth / state.scale, window.innerHeight / state.scale);
   // Draw Moon
   ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
   ctx.beginPath();
@@ -325,3 +325,12 @@ function throwBomb() {
 function animate(timestamp) {
   
 }
+
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  calculateScale();
+  initializeBombPosition();
+  draw();
+});
