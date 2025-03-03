@@ -28,6 +28,8 @@ function newGame() {
     backgroundBuildings: [],
     buildings: [],
     blastHoldes: [],
+
+    scale: 1,
   };
 
   // Generate background buildings
@@ -40,9 +42,18 @@ function newGame() {
     generateBuilding(i);
   }
 
+  calculateScale();
+
   initializeBombPosition();
 
   draw();
+}
+
+
+function calculateScale() {
+  const lastBuilding = state.buildings[state.buildings.length - 1];
+  const totalWidthOfTheCity = lastBuilding.x + lastBuilding.width;
+  state.scale = window.innerWidth / totalWidthOfTheCity;
 }
 
 
