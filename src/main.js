@@ -107,13 +107,13 @@ function generateBuilding(index) {
 
 function initializeBombPosition() {
   const building = state.currentPlayer === 1
-    ? state.buildings[2]
+    ? state.buildings[1]
     : state.buildings[state.buildings.length - 2];
   
   const gorillaX = building.x + building.width / 2;
   const gorillaY = building.height;
   
-  const gorillaHandOffsetX = state.player === 1 ? -28 : 28;
+  const gorillaHandOffsetX = state.currentPlayer === 1 ? -28 : 28;
   const gorillaHandOffsetY = 107;
 
   state.bomb.x = gorillaX + gorillaHandOffsetX;
@@ -247,7 +247,15 @@ function drawGorillaBody() {
 
 
 function drawBomb() {
-  // body...
+  ctx.save();
+  ctx.translate(state.bomb.x, state.bomb.y);
+
+  // Draw a circle
+  ctx.fillStyle = 'white';
+  ctx.beginPath();
+  ctx.arc(0, 0, 6, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.restore();
 }
 
 function drawBackgroundBuildings() {
