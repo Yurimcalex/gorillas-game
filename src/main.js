@@ -62,6 +62,7 @@ function draw() {
   // Flip coordinate system upside down
   ctx.translate(0, window.innerHeight);
   ctx.scale(1, -1);
+  ctx.scale(state.scale, state.scale);
   // Draw scene
   drawBackground();
   drawBackgroundBuildings();
