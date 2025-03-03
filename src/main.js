@@ -106,7 +106,20 @@ function generateBuilding(index) {
 }
 
 function initializeBombPosition() {
-  // body...
+  const building = state.currentPlayer === 1
+    ? state.buildings[2]
+    : state.buildings[state.buildings.length - 2];
+  
+  const gorillaX = building.x + building.width / 2;
+  const gorillaY = building.height;
+  
+  const gorillaHandOffsetX = state.player === 1 ? -28 : 28;
+  const gorillaHandOffsetY = 107;
+
+  state.bomb.x = gorillaX + gorillaHandOffsetX;
+  state.bomb.y = gorillaY + gorillaHandOffsetY;
+  state.bomb.velocity.x = 0;
+  state.bomb.velocity.y = 0;
 }
 
 
