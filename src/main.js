@@ -17,6 +17,9 @@ const velocity1DOM = document.querySelector('#info-left .velocity');
 const angle2DOM = document.querySelector('#info-right .angle');
 const velocity2DOM = document.querySelector('#info-right .velocity');
 
+// The bombs's grab area
+const bombGrabAreaDOM = document.getElementById('bomb-grab-area');
+
 
 newGame();
 
